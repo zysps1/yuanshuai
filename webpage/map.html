@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="1894.6">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'PingFang SC'}
+    span.s1 {font: 12.0px 'PingFang SC'}
+    span.s2 {font: 12.0px Helvetica}
+    span.Apple-tab-span {white-space:pre}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;</p>
+<p class="p1">&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1">&lt;meta http-equiv="Content-Type" content="text/html; charset=gb2312" /&gt;</p>
+<p class="p1">&lt;meta name="keywords" content="<span class="s1">百度地图</span>,<span class="s1">百度地图</span>API<span class="s1">，百度地图自定义工具，百度地图所见即所得工具</span>" /&gt;</p>
+<p class="p1">&lt;meta name="description" content="<span class="s1">百度地图</span>API<span class="s1">自定义地图，帮助用户在可视化操作下生成百度地图</span>" /&gt;</p>
+<p class="p1">&lt;title&gt;<span class="s1">百度地图</span>API<span class="s1">自定义地图</span>&lt;/title&gt;</p>
+<p class="p1">&lt;!--<span class="s1">引用百度地图</span>API--&gt;</p>
+<p class="p1">&lt;style type="text/css"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>html,body{margin:0;padding:0;}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.iw_poi_title {color:#CC5522;font-size:14px;font-weight:bold;overflow:hidden;padding-right:13px;white-space:nowrap}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.iw_poi_content {font:12px arial,sans-serif;overflow:visible;padding-top:4px;white-space:-moz-pre-wrap;word-wrap:break-word}</p>
+<p class="p1">&lt;/style&gt;</p>
+<p class="p1">&lt;script type="text/javascript" src="http://api.map.baidu.com/api?key=&amp;v=1.1&amp;services=true"&gt;&lt;/script&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!--<span class="s1">百度地图容器</span>--&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div style="width:697px;height:550px;border:#ccc solid 1px;" id="dituContent"&gt;&lt;/div&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;script type="text/javascript"&gt;</p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">    </span>//</span>创建和初始化地图函数：</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function initMap(){</p>
+<p class="p1"><span class="Apple-converted-space">        </span>createMap();//<span class="s1">创建地图</span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>setMapEvent();//<span class="s1">设置地图事件</span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>addMapControl();//<span class="s1">向地图添加控件</span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>addMarker();//<span class="s1">向地图中添加</span>marker</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">    </span>//</span>创建地图函数：</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function createMap(){</p>
+<p class="p1"><span class="Apple-converted-space">        </span>var map = new BMap.Map("dituContent");//<span class="s1">在百度地图容器中创建一个地图</span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>var point = new BMap.Point(114.219305,22.694207);//<span class="s1">定义一个中心点坐标</span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>map.centerAndZoom(point,17);//<span class="s1">设定地图的中心点和坐标并将地图显示在地图容器中</span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>window.map = map;//<span class="s1">将</span>map<span class="s1">变量存储在全局</span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">    </span>//</span>地图事件设置函数：</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function setMapEvent(){</p>
+<p class="p1"><span class="Apple-converted-space">        </span>map.enableDragging();//<span class="s1">启用地图拖拽事件，默认启用</span>(<span class="s1">可不写</span>)</p>
+<p class="p1"><span class="Apple-converted-space">        </span>map.enableScrollWheelZoom();//<span class="s1">启用地图滚轮放大缩小</span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>map.enableDoubleClickZoom();//<span class="s1">启用鼠标双击放大，默认启用</span>(<span class="s1">可不写</span>)</p>
+<p class="p1"><span class="Apple-converted-space">        </span>map.enableKeyboard();//<span class="s1">启用键盘上下左右键移动地图</span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">    </span>//</span>地图控件添加函数：</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function addMapControl(){</p>
+<p class="p1"><span class="Apple-converted-space">        </span>//<span class="s1">向地图中添加缩放控件</span></p>
+<p class="p1"><span class="Apple-tab-span">	</span>var ctrl_nav = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_LARGE});</p>
+<p class="p1"><span class="Apple-tab-span">	</span>map.addControl(ctrl_nav);</p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">        </span>//</span>向地图中添加缩略图控件</p>
+<p class="p1"><span class="Apple-tab-span">	</span>var ctrl_ove = new BMap.OverviewMapControl({anchor:BMAP_ANCHOR_BOTTOM_RIGHT,isOpen:1});</p>
+<p class="p1"><span class="Apple-tab-span">	</span>map.addControl(ctrl_ove);</p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">        </span>//</span>向地图中添加比例尺控件</p>
+<p class="p1"><span class="Apple-tab-span">	</span>var ctrl_sca = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});</p>
+<p class="p1"><span class="Apple-tab-span">	</span>map.addControl(ctrl_sca);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>//<span class="s1">标注点数组</span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>var markerArr = [{title:"CUHK-SZ",content:"<span class="s1">我的备注</span>",point:"114.219278|22.69429",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}}</p>
+<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span> ];</p>
+<p class="p1"><span class="Apple-converted-space">    </span>//<span class="s1">创建</span>marker</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function addMarker(){</p>
+<p class="p1"><span class="Apple-converted-space">        </span>for(var i=0;i&lt;markerArr.length;i++){</p>
+<p class="p1"><span class="Apple-converted-space">            </span>var json = markerArr[i];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>var p0 = json.point.split("|")[0];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>var p1 = json.point.split("|")[1];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>var point = new BMap.Point(p0,p1);</p>
+<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>var iconImg = createIcon(json.icon);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>var marker = new BMap.Marker(point,{icon:iconImg});</p>
+<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>var iw = createInfoWindow(i);</p>
+<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>var label = new BMap.Label(json.title,{"offset":new BMap.Size(json.icon.lb-json.icon.x+10,-20)});</p>
+<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>marker.setLabel(label);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>map.addOverlay(marker);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>label.setStyle({</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>borderColor:"#808080",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>color:"#333",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>cursor:"pointer"</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></p>
+<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>(function(){</p>
+<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>var index = i;</p>
+<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>var _iw = createInfoWindow(i);</p>
+<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>var _marker = marker;</p>
+<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>_marker.addEventListener("click",function(){</p>
+<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-converted-space">    </span>this.openInfoWindow(_iw);</p>
+<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-converted-space">    </span>});</p>
+<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-converted-space">    </span>_iw.addEventListener("open",function(){</p>
+<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-converted-space">    </span>_marker.getLabel().hide();</p>
+<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-converted-space">    </span>})</p>
+<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-converted-space">    </span>_iw.addEventListener("close",function(){</p>
+<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-converted-space">    </span>_marker.getLabel().show();</p>
+<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-converted-space">    </span>})</p>
+<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>label.addEventListener("click",function(){</p>
+<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-converted-space">    </span>_marker.openInfoWindow(_iw);</p>
+<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-converted-space">    </span>})</p>
+<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>if(!!json.isOpen){</p>
+<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>label.hide();</p>
+<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>_marker.openInfoWindow(_iw);</p>
+<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>}</p>
+<p class="p1"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>})()</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>//<span class="s1">创建</span>InfoWindow</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function createInfoWindow(i){</p>
+<p class="p1"><span class="Apple-converted-space">        </span>var json = markerArr[i];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>var iw = new BMap.InfoWindow("&lt;b class='iw_poi_title' title='" + json.title + "'&gt;" + json.title + "&lt;/b&gt;&lt;div class='iw_poi_content'&gt;"+json.content+"&lt;/div&gt;");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return iw;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>//<span class="s1">创建一个</span>Icon</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function createIcon(json){</p>
+<p class="p1"><span class="Apple-converted-space">        </span>var icon = new BMap.Icon("http://app.baidu.com/map/images/us_mk_icon.png", new BMap.Size(json.w,json.h),{imageOffset: new BMap.Size(-json.l,-json.t),infoWindowOffset:new BMap.Size(json.lb+5,1),offset:new BMap.Size(json.x,json.h)})</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return icon;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>initMap();//<span class="s1">创建和初始化地图</span></p>
+<p class="p1">&lt;/script&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
