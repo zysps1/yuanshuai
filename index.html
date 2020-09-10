@@ -48,6 +48,39 @@
 	body div.header > div.content{
 		padding:10px;
 	}
+
+	/* /导航 */
+	body div.nav{
+    float: center;
+	width:1000px;
+	height:40px;
+	margin:0 auto;
+    background-color: #5CA0C3;
+	padding: 0 ;
+	margin-top:20px;
+	}
+	body div.nav ul{
+		float:left;
+		margin:0px;
+		padding:0 0 0 0;
+		width: 1000px;
+		list-style:none;
+	}
+	body div.nav li{
+		display:inline
+	}
+	body div.nav li a{
+		float:left;
+		padding:11px 20px;
+		font-size:18px;
+		text-align:center;
+		text-decoration:none;
+		text-decoration-color: #fff;
+		color: #fff;
+	}
+	body div.nav li a:hover{
+		color: rgb(31, 30, 28)
+	}
 	/*
 		footer1
 	*/
@@ -176,20 +209,26 @@ div.quickLink{
 	min-height:70px;
 }
 div.quickLink > .block{
-	display:block;
+	display:inline-block;
 	float:left;
-	padding:10px 0px;
+	/* padding:10px 0px; */
 	text-align:center;
-	border:1px silver solid;
+	/* border:1px silver solid;
 	border-radius:5px;
-	box-shadow:2px 2px 1px silver;
-	width:100px;
+	box-shadow:2px 2px 1px silver; */
+	/* widows: 100%; */
 	/* margin-left: 2px;
 	margin-right:2px; */
 	margin-top:30px;
 	cursor:pointer;
 	font-size: 1.2em;
+
+	width: 13%;	
+	positive: relative;
+
 }
+
+
 </style>
 <!-- research and education -->
 <style type="text/css">
@@ -306,8 +345,8 @@ img.press{
 		</div> -->
 	</div>
 </div>
-
-<!-- <div class="content quickLink">
+<!-- 
+<div class="content quickLink">
 	<a class="block" href="#biography">Bibliography</a>
 	<a class="block" href="#education">Educations</a>
 	<a class="block" href="#honors">Awards</a>
@@ -316,6 +355,35 @@ img.press{
 	<a class="block" href="https://github.com/JunweiLiang" target="_blank">Code</a>
 	<a class="block" href="#teaching">Teaching</a>
 </div> -->
+
+<div class="nav">
+	<ul>
+		<li>
+			<a class="block" href="#biography">Bibliography</a>
+		</li>
+		<li>
+			<a class="block" href="#education">Educations</a>
+		</li>
+		<li>
+			<a class="block" href="#honors">Awards</a>
+		</li>
+		<li>
+			<a class="block" href="#research">Research</a>
+		</li>
+		<li>
+			<a class="block" href="#publications">Publications</a>
+		</li>
+		<li>
+			<a class="block" href="https://github.com/zysps1" target="_blank">Code</a>
+		</li>
+		<li>
+			<a class="block" href="#teaching">Teaching</a>
+		</li>
+		<li>
+			<a class="block" href="#news">News</a>
+		</li>
+	</ul>
+</div>
 
 <div class="content intro">
 	<a name="biography"></a>
@@ -420,6 +488,7 @@ img.press{
 </div>
 
 <div class="content pro">
+	<a name="news"></a>
 	<div class="title">News</div>
 	<ul>
 		<li>
@@ -429,7 +498,7 @@ img.press{
 </div>
 
 
-<div class="footer footer1">
+<!-- <div class="footer footer1">
 	<div class="blockleft">
 	<div class="content white-text">
 		Computer and Information Engineering <br/>
@@ -446,7 +515,27 @@ img.press{
 	<div class="content white-text">
 		Contact me: <a href="mailto:yuanshuaizheng@link.cuhk.edu.cn" style="color:white">yuanshuaizheng@link.cuhk.edu.cn</a>
 	</div>
+</div> -->
+
+<div class="header">
+	<ul>
+		<li>
+			<div class="content white-text">
+				Computer and Information Engineering <br/>
+				School of Science and Engineering <br/>
+				The Chinese University of Hong Kong, Shenzhen<br/>
+				2001 Longxiang Avenue, Longgang District, Shenzhen, Guangdong, China<br/>
+				<!-- <br> -->
+				<!-- Contact me: <a href="mailto:yuanshuaizheng@link.cuhk.edu.cn" style="color:white">yuanshuaizheng@link.cuhk.edu.cn</a> -->
+			</div>
+		</li>
+	</ul>
+
 </div>
+<div class="footer footer2">
+	<div class="content white-text">
+		Contact me: <a href="mailto:yuanshuaizheng@link.cuhk.edu.cn" style="color:white">yuanshuaizheng@link.cuhk.edu.cn</a>
+	</div>
 
 </body>
 </html>
